@@ -17,7 +17,7 @@
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="P2Pool"
 NAME=p2pool
-DAEMON=/root/yacoin-p2pool/run_p2pool.py
+DAEMON=/root/ybcoin-p2pool/run_p2pool.py
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 CHUID=p2pool:p2pool

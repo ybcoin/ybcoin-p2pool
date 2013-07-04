@@ -55,7 +55,7 @@ try:
         options=dict(py2exe=dict(
             bundle_files=bundle,
             dll_excludes=['w9xpopen.exe', "mswsock.dll", "MSWSOCK.dll"],
-            includes=['twisted.web.resource', 'yac_scrypt'],
+            includes=['twisted.web.resource', 'ybc_scrypt'],
             packages=['zope.interface']
         )),
         zipfile=None,

@@ -7,10 +7,10 @@
 #include "scrypt-jane/scrypt-jane.h"
 //#include "scrypt.h"
 
-// yacoin: increasing Nfactor gradually
+// ybcoin: increasing Nfactor gradually
 const unsigned char minNfactor = 4;
 const unsigned char maxNfactor = 30;
-int nChainStartTime = 1367991200;
+int nChainStartTime = 1372386273;
 
 
 #define max(a,b)            (((a) > (b)) ? (a) : (b))
@@ -80,6 +80,6 @@ static PyMethodDef ScryptMethods[] = {
     { NULL, NULL, 0, NULL }
 };
 
-PyMODINIT_FUNC inityac_scrypt(void) {
-    (void) Py_InitModule("yac_scrypt", ScryptMethods);
+PyMODINIT_FUNC initybc_scrypt(void) {
+    (void) Py_InitModule("ybc_scrypt", ScryptMethods);
 }

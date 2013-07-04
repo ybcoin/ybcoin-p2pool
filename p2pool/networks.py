@@ -8,8 +8,8 @@ from p2pool.util import math
 # changes can be done by changing one, then the other
 
 nets = dict(
-    yacoin=math.Object(
-        PARENT=networks.nets['yacoin'],
+    ybcoin=math.Object(
+        PARENT=networks.nets['ybcoin'],
         SHARE_PERIOD=3, # seconds
         CHAIN_LENGTH=24*60*60//3, # shares
         REAL_CHAIN_LENGTH=24*60*60//3, # shares
@@ -22,13 +22,13 @@ nets = dict(
         MAX_TARGET=2**256//2**20 - 1,
         PERSIST=False,
         WORKER_PORT=8336,
-        BOOTSTRAP_ADDRS='pool.bitcn.org 81.17.30.121 199.195.213.96 116.52.11.27 184.175.53.111 212.92.177.74 88.190.223.101'.split(' '),
-        ANNOUNCE_CHANNEL='#p2pool-alt',
+        BOOTSTRAP_ADDRS='seeds.ybcoin.com seed1.ybcoin.org seed2.ybcoin.org'.split(' '),
+        ANNOUNCE_CHANNEL='#p2pool-alt-ybcoin',
         VERSION_CHECK=lambda v: v >= 60004,
     ),
 
-    yacoin_testnet=math.Object(
-        PARENT=networks.nets['yacoin_testnet'],
+    ybcoin_testnet=math.Object(
+        PARENT=networks.nets['ybcoin_testnet'],
         SHARE_PERIOD=3, # seconds
         CHAIN_LENGTH=20*60//3, # shares
         REAL_CHAIN_LENGTH=20*60//3, # shares

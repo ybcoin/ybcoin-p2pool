@@ -31,43 +31,43 @@ def debug_block_info(dat1):
 	return 0
 
 nets = dict(
-    yacoin=math.Object(
-        P2P_PREFIX='d9e6e7e5'.decode('hex'),
-        P2P_PORT=7688,
-        ADDRESS_VERSION=77,
+    ybcoin=math.Object(
+        P2P_PREFIX='d4e7e8e5'.decode('hex'),
+        P2P_PORT=7337,
+        ADDRESS_VERSION=78,
         RPC_PORT=8344,
         RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
-            'yacoinaddress' in (yield bitcoind.rpc_help()) and
+            'ybcoinaddress' in (yield bitcoind.rpc_help()) and
             not (yield bitcoind.rpc_getinfo())['testnet']
         )),
-        SUBSIDY_FUNC=lambda target: get_subsidy(6, 100, target),
-        BLOCKHASH_FUNC=lambda header: pack.IntType(256).unpack(__import__('yac_scrypt').getPoWHash(header, data.block_header_type.unpack(header)['timestamp'])),
-        POW_FUNC=lambda header: pack.IntType(256).unpack(__import__('yac_scrypt').getPoWHash(header, data.block_header_type.unpack(header)['timestamp'])),
+        SUBSIDY_FUNC=lambda target: get_subsidy(6, 10, target),
+        BLOCKHASH_FUNC=lambda header: pack.IntType(256).unpack(__import__('ybc_scrypt').getPoWHash(header, data.block_header_type.unpack(header)['timestamp'])),
+        POW_FUNC=lambda header: pack.IntType(256).unpack(__import__('ybc_scrypt').getPoWHash(header, data.block_header_type.unpack(header)['timestamp'])),
         BLOCK_PERIOD=60, # s
-        SYMBOL='YAC',
-        CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'yacoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/yacoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.yacoin'), 'yacoin.conf'),
-        BLOCK_EXPLORER_URL_PREFIX='http://yacexplorer.tk/block/',
-        ADDRESS_EXPLORER_URL_PREFIX='http://yacexplorer.tk/address/',
+        SYMBOL='YBC',
+        CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'ybcoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/ybcoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.ybcoin'), 'ybcoin.conf'),
+        BLOCK_EXPLORER_URL_PREFIX='http://ybcexplorer.tk/block/',
+        ADDRESS_EXPLORER_URL_PREFIX='http://ybcexplorer.tk/address/',
         SANE_TARGET_RANGE=(2**256//2**20//1000 - 1, 2**256//2**20 - 1),
     ),
 
-    yacoin_testnet=math.Object(
-        P2P_PREFIX='cdf2c0ef'.decode('hex'),
-        P2P_PORT=17777,
-        ADDRESS_VERSION=111,
+    ybcoin_testnet=math.Object(
+        P2P_PREFIX='d4e7e8e5'.decode('hex'),
+        P2P_PORT=7337,
+        ADDRESS_VERSION=78,
         RPC_PORT=8344,
         RPC_CHECK=defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
-            'novacoinaddress' in (yield bitcoind.rpc_help()) and
+            'ybcoinaddress' in (yield bitcoind.rpc_help()) and
             (yield bitcoind.rpc_getinfo())['testnet']
         )),
-        SUBSIDY_FUNC=lambda target: get_subsidy(6, 100, target),
-        BLOCKHASH_FUNC=lambda data: pack.IntType(256).unpack(__import__('ltc_scrypt').getPoWHash(data)),
-        POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('ltc_scrypt').getPoWHash(data)),
-        BLOCK_PERIOD=600, # s
-        SYMBOL='tNVC',
-        CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'YaCoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/YaCoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.yacoin'), 'yacoin.conf'),
-        BLOCK_EXPLORER_URL_PREFIX='http://nonexistent-yacoin-testnet-explorer/block/',
-        ADDRESS_EXPLORER_URL_PREFIX='http://nonexistent-yacoin-testnet-explorer/address/',
+        SUBSIDY_FUNC=lambda target: get_subsidy(6, 10, target),
+        BLOCKHASH_FUNC=lambda data: pack.IntType(256).unpack(__import__('ybc_scrypt').getPoWHash(data)),
+        POW_FUNC=lambda data: pack.IntType(256).unpack(__import__('ybc_scrypt').getPoWHash(data)),
+        BLOCK_PERIOD=60, # s
+        SYMBOL='YBC',
+        CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'YbCoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/YbCoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.ybcoin'), 'ybcoin.conf'),
+        BLOCK_EXPLORER_URL_PREFIX='http://nonexistent-ybcoin-testnet-explorer/block/',
+        ADDRESS_EXPLORER_URL_PREFIX='http://nonexistent-ybcoin-testnet-explorer/address/',
         SANE_TARGET_RANGE=(2**256//1000000000 - 1, 2**256//1000 - 1),
     ),
 )

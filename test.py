@@ -22,10 +22,10 @@ nonce=58004,
 
 DONATION_SCRIPT = '01210241b8aba0994f320a8b438c627dbf31fbdd7dc722dd8418d829d67a9c6e4fd69021036fbd9d0a34a569f10b0431c8aeecf74ad796b99838b7272ef35ded130a794f9b02ae'.decode('hex')
 print DONATION_SCRIPT[2:35].encode('hex')
-print data.pubkey_to_address(DONATION_SCRIPT[2:35], networks.nets['yacoin'])
-print networks.nets['yacoin'].POW_FUNC(data.block_header_type.pack(block_header)) 
+print data.pubkey_to_address(DONATION_SCRIPT[2:35], networks.nets['ybcoin'])
+print networks.nets['ybcoin'].POW_FUNC(data.block_header_type.pack(block_header)) 
 
-print data.pubkey_hash_to_script2(data.address_to_pubkey_hash('YJL3vTFn7m82zQRs7XAXcJXnBNNmZdb1Ty', networks.nets['yacoin'])).encode('hex')
+print data.pubkey_hash_to_script2(data.address_to_pubkey_hash('YJL3vTFn7m82zQRs7XAXcJXnBNNmZdb1Ty', networks.nets['ybcoin'])).encode('hex')
 
 donate = '4104ffd03de44a6e11b9917f3a29f9443283d9871c9d743ef30d5eddcd37094b64d1b3d8090496b53256786bf5c82932ec23c3b74d9f05a6f95a8b5529352656664bac'.decode('hex')
 #print data.script2_to_address(donate, networks.nets['bitcoin'])
